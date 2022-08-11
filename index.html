@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Salatim - Salah Timings By MD Bhoraniya</title>
+	</head>
+	
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<body>
+
+		<div class="sidenav noselect col-xs-12">
+			<div class="card">
+
+				<div class="card-header">
+					<h4 class="mb-0 text-center">Salatim</h4>
+				</div>
+
+				<div class="card-body">
+					<form class="form" action="javascript:update();">
+						<div class="form-group row">
+							<label class="col-lg-12 col-form-label form-control-label pb0" for="latitude">Latitude</label>
+							<div class="col-lg-12">
+								<input value="19.16" id="latitude" name="latitude" class="form-control input-sm noselect" type="text" onchange="update();">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-lg-12 col-form-label form-control-label pb0" for="longitude">Longitude</label>
+							<div class="col-lg-12">
+								<input value="72.85" id="longitude" name="longitude" class="form-control noselect" type="text" onchange="update();">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-12 col-form-label form-control-label pb0">School</label>
+							<div class="col-lg-12">
+								<select id="school" name="school" class="form-control" onchange="update();">
+									<option value="">Select School</option>
+									<option value="Standard">Shafi</option>
+									<option value="Hanafi" selected="selected">Hanfi</option>
+								</select>
+							</div>
+						</div>
+
+						<h6>Tuning</h6>
+
+						<div class="form-group row">
+							<label class="col-lg-6 col-form-label form-control-label pb0" for="tune_fajr">Fajr</label>
+							<div class="col-lg-6">
+								<input id="tune_fajr" name="tune_fajr" class="form-control noselect" type="number" value="0" onchange="update();">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-6 col-form-label form-control-label pb0" for="tune_zuhr">Zuhr</label>
+							<div class="col-lg-6">
+								<input id="tune_zuhr" name="tune_zuhr" class="form-control noselect" type="number" value="0" onchange="update();">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-6 col-form-label form-control-label pb0" for="tune_asr">Asr</label>
+							<div class="col-lg-6">
+								<input id="tune_asr" name="tune_asr" class="form-control noselect" type="number" value="0" onchange="update();">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-6 col-form-label form-control-label pb0" for="tune_magrib">Magrib</label>
+							<div class="col-lg-6">
+								<input id="tune_magrib" name="tune_magrib" class="form-control noselect" type="number" value="0" onchange="update();">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-6 col-form-label form-control-label pb0" for="tune_isha">Isha</label>
+							<div class="col-lg-6">
+								<input id="tune_isha" name="tune_isha" class="form-control noselect" type="number" value="0" onchange="update();">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-6 col-form-label form-control-label pb0" for="tune_sehri">Sehri</label>
+							<div class="col-lg-6">
+								<input id="tune_sehri" name="tune_sehri" class="form-control noselect" type="number" value="0" onchange="update();">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-6 col-form-label form-control-label pb0" for="tune_iftar">Iftar</label>
+							<div class="col-lg-6">
+								<input id="tune_iftar" name="tune_iftar" class="form-control noselect" type="number" value="0" onchange="update();">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-6 col-form-label form-control-label pb0" for="tune_midnight">Midnight</label>
+							<div class="col-lg-6">
+								<input id="tune_midnight" name="tune_midnight" class="form-control noselect" type="number" value="0" onchange="update();">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-6 col-form-label form-control-label pb0" for="tune_sunrise">Sunrise</label>
+							<div class="col-lg-6">
+								<input id="tune_sunrise" name="tune_sunrise" class="form-control noselect" type="number" value="0" onchange="update();">
+							</div>
+						</div>
+
+						<input type="hidden" id="timezone" name="timezone" value="+5.5">
+						<input type="hidden" id="year" name="year" value="2018">
+						<input type="hidden" id="method" name="method" value="Karachi">
+						<input type="hidden" id="dst" name="dst" value="auto">
+						<input type="hidden" id="time_format" name="time_format" value="12hNS">
+						<div class="form-group row">
+							<div class="col-lg-12">
+								<input type="submit" class="btn btn-primary form-control" id="submit" value="Submit">
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+				<div class="card-footer">
+					<div id="footer_text" class="noselect text-center"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="main col-xs-12" id="timetable"></div>
+
+		<script type="text/javascript" src="js/salatim.js"></script>
+		<script type="text/javascript" src="js/custom.js"></script>
+
+	</body>
+</html>
+
+
+
